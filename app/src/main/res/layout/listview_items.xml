@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_main_quoteContainer"
+        android:layout_marginTop="12dp"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ll_background">
+    <TextView
+        android:id="@+id/tv_listViewItems_quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:clickable="true"
+        android:textColor="@color/black"
+        android:text="one famous man said that we make our own enemy, now two famous person said
+that."
+        />
+    <TextView
+        android:id="@+id/tv_listViewItems_authorName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="Tony Stark"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/imgBtn_listViewItems_favorite"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/favorite_border_desc"
+        android:scaleType="fitXY"
+        android:src="@drawable/favorite_border_24"
+        android:background="@android:color/transparent"
+        />
+
+    <ImageButton
+        android:id="@+id/imgBtn_listViewItems_copy"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/content_copy_24"
+        android:background="@android:color/transparent"
+        />
+    </LinearLayout>
+
+</LinearLayout>

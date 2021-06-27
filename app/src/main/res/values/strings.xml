@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Famous Quotes</string>
+    <string name="favorite_border_desc">favorite border</string>
 </resources>
