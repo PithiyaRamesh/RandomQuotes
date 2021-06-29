@@ -14,10 +14,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
-DataClass[] quotes;
+ArrayList<DataClass> quotes;
 Context context;
-    public RecyclerViewAdapter(Context context, DataClass[] dataClasses){
+    public RecyclerViewAdapter(Context context, ArrayList<DataClass> dataClasses){
         this.context = context;
         quotes = dataClasses;
     }
@@ -32,8 +34,8 @@ Context context;
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.tvQuote.setText(quotes[position].getQuote());
-        holder.tvAuthor.setText(quotes[position].getAuthor());
+        holder.tvQuote.setText(quotes.get(position).getQuote());
+        holder.tvAuthor.setText(quotes.get(position).getAuthor());
 
         //Button to add quote into favorite list
         /*holder.imgBtnFavorite.setOnClickListener(v -> {
@@ -53,7 +55,7 @@ Context context;
             @Override
             public void onClick(View v) {
                 ClipboardManager clipboardManager = (ClipboardManager)context.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clipData = ClipData.newPlainText("Quote", quotes[position].getQuote()+" ~"+quotes[position].getAuthor());
+                ClipData clipData = ClipData.newPlainText("Quote", quotes.get(position).getQuote()+" ~"+quotes.get(position).getAuthor());
                 clipboardManager.setPrimaryClip(clipData);
                 Toast.makeText(context, "Copied!", Toast.LENGTH_SHORT).show();
             }
@@ -62,7 +64,7 @@ Context context;
 
     @Override
     public int getItemCount() {
-        return quotes.length;
+        return quotes.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
