@@ -1,4 +1,4 @@
-package com.famousquotes;
+package com.randomquotes;
 
 import org.junit.Test;
 

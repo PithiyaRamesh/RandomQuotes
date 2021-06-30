@@ -1,4 +1,4 @@
-package com.famousquotes;
+package com.randomquotes;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.famousquotes", appContext.getPackageName());
+        assertEquals("com.randomquotes", appContext.getPackageName());
     }
 }
