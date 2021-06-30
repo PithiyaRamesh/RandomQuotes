@@ -21,6 +21,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:padding="1dp"
+                android:src="@drawable/icon_round"
+                android:background="@drawable/icon_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -28,11 +39,9 @@
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
                 app:title="@string/app_name"
+                app:titleMarginStart="53dp"
                 app:titleTextColor="#F3115E" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

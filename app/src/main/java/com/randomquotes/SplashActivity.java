@@ -1,4 +1,4 @@
-package com.famousquotes;
+package com.randomquotes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,12 +12,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,39 +35,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        if (!isConnected()) {
-            Toast.makeText(getApplicationContext(),"No Internet Retrying", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(() -> {
-                if (!isConnected()) {
-                    //TODO: Show favorite quotes activity
-                    Toast.makeText(getApplicationContext(),"No Internet", Toast.LENGTH_SHORT).show();
-                    finishAffinity();
-                }
-            }, 3000);
-        } else {
-            String url = "https://type.fit/api/quotes";
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                    response -> {
-                        try {
-                            JSONArray jsonArray = new JSONArray(response);
-                            JSONObject jsonObject;
-                            quotes = new ArrayList<>();
-                            for (int i = 0; i < jsonArray.length(); i++) {
-                                jsonObject = jsonArray.getJSONObject(i);
-                                quotes.add(new DataClass(jsonObject.getString("text"), "~" + jsonObject.getString("author")));
-                            }
-                            Intent intentMain = new Intent(this, MainActivity.class);
-                            intentMain.putParcelableArrayListExtra("quotes", quotes);
-                            startActivity(intentMain);
-                        } catch (Exception e) {
-                            Log.e(TAG, "ERROR: " + e);
-                            Toast.makeText(getApplicationContext(), "Please Check Internet: " + e, Toast.LENGTH_LONG).show();
-                        }
-                    }, error -> Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show());
-
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
-            requestQueue.add(stringRequest);
-        }
+        getQuotes();
     }
 
     private boolean isConnected() {
@@ -90,6 +61,43 @@ public class SplashActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private void getQuotes(){
+        View view = findViewById(android.R.id.content);
+        if (!isConnected()) {
+            Snackbar.make(view, "No Internet!", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Retry", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            getQuotes();
+                        }
+                    }).show();
+        }
+        else{
+                String url = "https://type.fit/api/quotes";
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        response -> {
+                            try {
+                                JSONArray jsonArray = new JSONArray(response);
+                                JSONObject jsonObject;
+                                quotes = new ArrayList<>();
+                                for (int i = 0; i < jsonArray.length(); i++) {
+                                    jsonObject = jsonArray.getJSONObject(i);
+                                    quotes.add(new DataClass(jsonObject.getString("text"), "~" + jsonObject.getString("author")));
+                                }
+                                Intent intentMain = new Intent(this, MainActivity.class);
+                                intentMain.putParcelableArrayListExtra("quotes", quotes);
+                                startActivity(intentMain);
+                            } catch (Exception e) {
+                                Log.e(TAG, "ERROR: " + e);
+                                Toast.makeText(getApplicationContext(), "Please Check Internet: " + e, Toast.LENGTH_LONG).show();
+                            }
+                        }, error -> Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show());
+
+                RequestQueue requestQueue = Volley.newRequestQueue(this);
+                requestQueue.add(stringRequest);
+            }
     }
 
     private boolean isInternet(){

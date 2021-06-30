@@ -1,4 +1,4 @@
-package com.famousquotes;
+package com.randomquotes;
 
 import android.os.Parcel;
 import android.os.Parcelable;

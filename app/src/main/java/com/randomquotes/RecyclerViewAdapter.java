@@ -1,4 +1,4 @@
-package com.famousquotes;
+package com.randomquotes;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
