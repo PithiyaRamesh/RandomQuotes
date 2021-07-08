@@ -11,11 +11,11 @@
         android:id="@+id/tv_recItems_quote"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:textSize="20sp"
         android:clickable="true"
+        android:focusable="true"
         android:textColor="@color/black"
-        android:text="one famous man said that we make our own enemy, now two famous person said
-that."
         />
     <TextView
         android:id="@+id/tv_recItems_authorName"
@@ -24,7 +24,7 @@ that."
         android:textSize="18sp"
         android:textStyle="bold|italic"
         android:textColor="@android:color/holo_red_dark"
-        android:text="Tony Stark"
+        android:text=""
         />
     <LinearLayout
         android:layout_width="wrap_content"
