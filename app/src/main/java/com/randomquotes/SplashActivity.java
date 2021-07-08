@@ -13,8 +13,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD:app/src/main/java/com/randomquotes/SplashActivity.java
 import android.view.Window;
 import android.view.WindowManager;
+=======
+>>>>>>> 7be48a1f9dc801c0b765f1f3c633669e69536377:app/src/main/java/com/famousquotes/SplashActivity.java
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,7 +42,10 @@ public class SplashActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+<<<<<<< HEAD:app/src/main/java/com/randomquotes/SplashActivity.java
 
+=======
+>>>>>>> 7be48a1f9dc801c0b765f1f3c633669e69536377:app/src/main/java/com/famousquotes/SplashActivity.java
         getQuotes();
     }
 
