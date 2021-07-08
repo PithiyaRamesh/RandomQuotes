@@ -1,3 +1,3 @@
 # RandomQuotes
-<img src="Screenshots/splashScreen.png" width="400"/>
-<img src="Screenshots/mainScreen.png" width="400"/>
+<img src="Screenshots/splashScreen.png" height="650"/>
+<img src="Screenshots/mainScreen.png" height="650"/>
